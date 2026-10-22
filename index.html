@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QPR Buddy</title>
+<meta name="theme-color" content="#1d5ba4">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="QPR Buddy">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<style>
+:root {
+  --blue: #1d5ba4; --blue-dark: #123e73; --blue-soft: #94b3dd; --red: #c8102e;
+  --bg: #eef2f8; --card: #fff; --ink: #14213d; --muted: #66708a; --line: #dde3ee;
+  --win: #1f9d55; --draw: #8a93a6; --loss: #c8102e;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-text-size-adjust: 100%; }
+header { position: sticky; top: 0; z-index: 5; color: #fff; padding: calc(env(safe-area-inset-top) + 10px) 16px 10px;
+  background: repeating-linear-gradient(0deg, var(--blue) 0 22px, #2a6bb8 22px 26px); display: flex; align-items: center; gap: 10px; }
+header img { width: 34px; height: 34px; background: #fff; border-radius: 50%; padding: 2px; }
+header h1 { font-size: 20px; margin: 0; letter-spacing: .3px; }
+main { padding: 12px 16px calc(env(safe-area-inset-bottom) + 86px); max-width: 720px; margin: 0 auto; }
+nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; display: flex; background: #fff; border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom); }
+nav button { flex: 1; border: 0; background: none; padding: 8px 0 7px; font: 600 11px/1.2 inherit; color: var(--muted); }
+nav button svg { display: block; margin: 0 auto 3px; width: 24px; height: 24px; }
+nav button.on { color: var(--blue); }
+.card { background: var(--card); border-radius: 14px; padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(20,33,61,.06); }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); margin: 16px 2px 8px; }
+.muted { color: var(--muted); font-size: 13px; }
+.hero { text-align: center; padding: 22px 14px 18px; }
+.hero img { width: 150px; height: 150px; }
+.hero .big { font-size: 22px; font-weight: 700; margin-top: 8px; }
+.match { display: flex; align-items: center; gap: 10px; }
+.match .crest { width: 34px; height: 34px; object-fit: contain; flex: none; }
+.match .who { flex: 1; min-width: 0; }
+.match .who b { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.score { font-weight: 800; font-size: 18px; font-variant-numeric: tabular-nums; }
+.badge { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; color: #fff; font-weight: 800; font-size: 13px; }
+.W { background: var(--win); } .D { background: var(--draw); } .L { background: var(--loss); }
+.list .match { padding: 10px 0; border-top: 1px solid var(--line); }
+.list .match:first-child { border-top: 0; padding-top: 0; }
+.list .match:last-child { padding-bottom: 0; }
+.form { display: flex; gap: 5px; justify-content: center; margin-top: 8px; }
+.ha { font-size: 11px; font-weight: 700; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; }
+.btn { display: inline-block; border: 0; border-radius: 10px; background: var(--blue); color: #fff; font: 600 14px inherit;
+  padding: 9px 14px; text-decoration: none; }
+.btn.ghost { background: #e6eefa; color: var(--blue); }
+.cal { border: 0; background: #e6eefa; color: var(--blue); border-radius: 9px; width: 38px; height: 38px; flex: none; }
+.cal svg { width: 20px; height: 20px; }
+.datechip { flex: none; width: 46px; text-align: center; border-radius: 9px; background: #f3f6fb; padding: 4px 0; }
+.datechip .d { font-size: 18px; font-weight: 800; line-height: 1.1; }
+.datechip .m { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.countdown { font-size: 13px; color: var(--blue); font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+th { font-size: 11px; color: var(--muted); font-weight: 600; text-align: right; padding: 4px 3px; }
+td { padding: 6px 3px; text-align: right; border-top: 1px solid var(--line); }
+td.t, th.t { text-align: left; }
+td.t img { width: 18px; height: 18px; vertical-align: -4px; margin-right: 6px; object-fit: contain; }
+tr.me td { background: #e6eefa; font-weight: 700; }
+tr.zone-top td:first-child { box-shadow: inset 3px 0 var(--win); }
+tr.zone-po td:first-child { box-shadow: inset 3px 0 var(--blue-soft); }
+tr.zone-down td:first-child { box-shadow: inset 3px 0 var(--loss); }
+.news a { display: flex; gap: 12px; color: inherit; text-decoration: none; padding: 12px 0; border-top: 1px solid var(--line); }
+.news a:first-child { border-top: 0; padding-top: 0; }
+.news img { width: 96px; height: 64px; object-fit: cover; border-radius: 8px; flex: none; background: #f3f6fb; }
+.news b { display: block; font-size: 15px; line-height: 1.3; }
+/* chart */
+.chartcard { padding: 12px 8px 10px; }
+.charttitle { font-weight: 700; text-align: center; font-size: 15px; padding: 0 6px; }
+#chart { width: 100%; display: block; touch-action: pan-y; }
+#chart text { font-family: inherit; }
+.slider { display: flex; align-items: center; gap: 10px; padding: 6px 8px 0; }
+.slider input { flex: 1; accent-color: var(--blue); height: 28px; }
+.slider output { font-weight: 800; min-width: 74px; text-align: right; font-variant-numeric: tabular-nums; }
+.seg { display: flex; background: #eef2f8; border-radius: 9px; padding: 3px; margin: 8px 8px 0; }
+.seg button { flex: 1; border: 0; background: none; border-radius: 7px; padding: 6px 4px; font: 600 13px inherit; color: var(--muted); }
+.seg button.on { background: #fff; color: var(--red); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; font-size: 12px; color: var(--muted); padding: 8px 6px 0; }
+.legend i { display: inline-block; vertical-align: middle; margin-right: 5px; }
+#detail { min-height: 40px; margin: 8px 8px 0; font-size: 14px; background: #f6f8fc; border-radius: 9px; padding: 8px 10px; }
+footer { text-align: center; font-size: 12px; color: var(--muted); padding: 8px 0 0; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header><img src="icons/crest.svg" alt=""><h1>QPR Buddy</h1></header>
+<main>
+  <section id="home"></section>
+  <section id="results" hidden></section>
+  <section id="fixtures" hidden></section>
+  <section id="league" hidden>
+    <div class="card chartcard">
+      <div class="charttitle" id="charttitle"></div>
+      <svg id="chart" role="img" aria-label="Points after N games each season against league position"></svg>
+      <div class="slider"><span class="muted">Games</span>
+        <input id="games" type="range" min="1" max="46" step="1"><output id="gamesout"></output></div>
+      <div class="seg" id="linemode">
+        <button data-mode="final" class="on">Final position</button>
+        <button data-mode="then">Position after <span class="n"></span></button>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div id="detail"></div>
+    </div>
+    <h2>Championship table</h2>
+    <div class="card" style="padding:8px 10px" id="table"></div>
+  </section>
+  <section id="news" hidden></section>
+  <footer id="footer"></footer>
+</main>
+<nav id="tabs">
+  <button data-tab="home" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
+  <button data-tab="results"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3l3 6-3 3-3-3zM3.5 10l5.5-1M20.5 10l-5.5-1M9 21l3-9 3 9"/></svg>Results</button>
+  <button data-tab="fixtures"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Fixtures</button>
+  <button data-tab="league"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>League</button>
+  <button data-tab="news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>News</button>
+</nav>
+<script>
+const APP_VERSION = 1;
+const TEAM_ID = 69;
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
+const uk = (iso, opts) => new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", ...opts }).format(new Date(iso));
+const kickoff = (iso) => uk(iso, { hour: "2-digit", minute: "2-digit" });
+const longDate = (iso) => uk(iso, { weekday: "short", day: "numeric", month: "short" });
+const crest = (t) => t && t.crest ? `<img class="crest" src="${esc(t.crest)}" alt="" loading="lazy">` : `<span class="crest"></span>`;
+let S, H, N; // season, history, news
+
+/* ---------- tabs ---------- */
+function show(tab) {
+  document.querySelectorAll("main > section").forEach((s) => (s.hidden = s.id !== tab));
+  document.querySelectorAll("#tabs button").forEach((b) => b.classList.toggle("on", b.dataset.tab === tab));
+  try { localStorage.setItem("tab", tab); } catch (e) {}
+  scrollTo(0, 0);
+  if (tab === "league") drawChart();
+}
+$("#tabs").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) show(b.dataset.tab); });
+
+/* ---------- pieces ---------- */
+function resultRow(m) {
+  return `<div class="match">
+    <span class="badge ${m.result}">${m.result}</span>${crest(m.opponent)}
+    <div class="who"><b>${esc(m.opponent.name)}</b><span class="muted">${longDate(m.utc)} · ${m.competition === "Championship" ? "" : esc(m.competition) + " · "}<span class="ha">${m.home ? "H" : "A"}</span></span></div>
+    <span class="score">${m.for}–${m.against}</span></div>`;
+}
+function countdown(iso) {
+  const ms = new Date(iso) - Date.now();
+  if (ms < 0) return "Kicking off";
+  const d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
+  return d ? `in ${d} day${d > 1 ? "s" : ""}${h ? `, ${h} hr` : ""}` : h ? `in ${h} hr ${m} min` : `in ${m} min`;
+}
+function fixtureRow(m) {
+  const d = new Date(m.utc);
+  return `<div class="match">
+    <div class="datechip"><div class="m">${uk(m.utc, { weekday: "short" })}</div><div class="d">${uk(m.utc, { day: "numeric" })}</div></div>
+    ${crest(m.opponent)}
+    <div class="who"><b>${m.home ? "" : "@ "}${esc(m.opponent.name)}</b>
+      <span class="muted">${m.status === "POSTPONED" ? "Postponed" : kickoff(m.utc)} · <span class="ha">${m.home ? "H" : "A"}</span>${m.competition === "Championship" ? "" : " · " + esc(m.competition)}</span></div>
+    <button class="cal" data-id="${m.id}" aria-label="Add to calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg></button></div>`;
+}
+
+/* ---------- calendar (.ics) ---------- */
+function icsDate(iso) { return new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d+/, ""); }
+function icsEvent(m) {
+  const end = new Date(new Date(m.utc).getTime() + 115 * 6e4).toISOString();
+  const title = m.home ? `QPR v ${m.opponent.name}` : `${m.opponent.name} v QPR`;
+  return ["BEGIN:VEVENT", `UID:qpr-${m.id}@qpr-buddy`, `DTSTAMP:${icsDate(new Date().toISOString())}`,
+    `DTSTART:${icsDate(m.utc)}`, `DTEND:${icsDate(end)}`, `SUMMARY:${title}`,
+    `LOCATION:${m.home ? "Loftus Road" : ""}`, `DESCRIPTION:${m.competition}`, "END:VEVENT"].join("\r\n");
+}
+function downloadIcs(list, name) {
+  const body = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//QPR Buddy//EN", ...list.map(icsEvent), "END:VCALENDAR"].join("\r\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([body], { type: "text/calendar" }));
+  a.download = name; document.body.append(a); a.click(); a.remove();
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest(".cal"); if (!b) return;
+  const m = S.fixtures.find((f) => String(f.id) === b.dataset.id);
+  if (m) downloadIcs([m], `qpr-${m.opponent.name.replace(/\W+/g, "-").toLowerCase()}.ics`);
+});
+
+/* ---------- pages ---------- */
+function renderHome() {
+  const me = S.table.find((r) => r.id === TEAM_ID);
+  const next = S.fixtures.find((f) => f.status !== "POSTPONED");
+  const last = S.results[0];
+  const form = S.results.filter((r) => r.competition === "Championship").slice(0, 5).reverse();
+  $("#home").innerHTML = `
+    <div class="card hero"><img src="icons/crest.svg" alt="QPR crest">
+      <div class="big">${ord(me.pos)} in the Championship</div>
+      <div class="muted">${me.pts} points from ${me.p} games · W${me.w} D${me.d} L${me.l} · GD ${me.gd > 0 ? "+" : ""}${me.gd}</div>
+      <div class="form">${form.map((r) => `<span class="badge ${r.result}">${r.result}</span>`).join("")}</div></div>
+    ${next ? `<h2>Next match</h2><div class="card list">${fixtureRow(next)}
+      <div class="countdown" style="margin-top:8px">${longDate(next.utc)}, ${kickoff(next.utc)} · ${countdown(next.utc)}</div></div>` : ""}
+    ${last ? `<h2>Latest result</h2><div class="card list">${resultRow(last)}</div>` : ""}
+    ${N && N.items[0] ? `<h2>Latest news</h2><div class="card news">${newsRows(N.items.slice(0, 2))}</div>` : ""}`;
+}
+function renderResults() {
+  $("#results").innerHTML = `<h2>${S.season} results</h2><div class="card list">${S.results.map(resultRow).join("") || '<span class="muted">No games yet</span>'}</div>`;
+}
+function renderFixtures() {
+  const months = {};
+  S.fixtures.forEach((m) => (months[uk(m.utc, { month: "long", year: "numeric" })] ??= []).push(m));
+  $("#fixtures").innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+      <span class="muted">Times are UK time</span>
+      <button class="btn ghost" id="calall">Add all to calendar</button></div>` +
+    Object.entries(months).map(([mo, list]) => `<h2>${mo}</h2><div class="card list">${list.map(fixtureRow).join("")}</div>`).join("");
+  $("#calall").onclick = () => downloadIcs(S.fixtures.filter((f) => f.status !== "POSTPONED"), "qpr-fixtures.ics");
+}
+function renderTable() {
+  const n = S.table.length;
+  $("#table").innerHTML = `<table><tr><th>#</th><th class="t">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th></tr>` +
+    S.table.map((r) => `<tr class="${r.id === TEAM_ID ? "me" : ""} ${r.pos <= 2 ? "zone-top" : r.pos <= 6 ? "zone-po" : r.pos > n - 3 ? "zone-down" : ""}">
+      <td>${r.pos}</td><td class="t">${r.crest ? `<img src="${esc(r.crest)}" alt="" loading="lazy">` : ""}${esc(r.name)}</td>
+      <td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td>${r.gd > 0 ? "+" : ""}${r.gd}</td><td><b>${r.pts}</b></td></tr>`).join("") +
+    `</table><div class="muted" style="padding:8px 2px 2px">Green: automatic promotion · light blue: play-offs · red: relegation</div>`;
+}
+function ago(iso) {
+  const h = (Date.now() - new Date(iso)) / 36e5;
+  return h < 1 ? "just now" : h < 24 ? `${Math.floor(h)} hr ago` : h < 48 ? "yesterday" : longDate(iso);
+}
+function newsRows(items) {
+  return items.map((n) => `<a href="${esc(n.link)}" target="_blank" rel="noopener">
+    ${n.image ? `<img src="${esc(n.image)}" alt="" loading="lazy">` : ""}
+    <div><b>${esc(n.title)}</b><span class="muted">${esc(n.source)} · ${ago(n.date)}</span></div></a>`).join("");
+}
+function renderNews() {
+  $("#news").innerHTML = `<div style="margin-top:4px"><a class="btn" href="https://www.qpr.co.uk/news" target="_blank" rel="noopener">QPR official news ↗</a></div>
+    <h2>BBC Sport</h2><div class="card news">${N ? newsRows(N.items) : '<span class="muted">No news loaded</span>'}</div>`;
+}
+
+/* ---------- league progress chart ---------- */
+let games, lineMode = "final", picked = null;
+function smooth(pts) { // Catmull-Rom through the points as cubic Béziers
+  let d = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+    d += ` C${p1[0] + (p2[0] - p0[0]) / 6},${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6},${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]},${p2[1]}`;
+  }
+  return d;
+}
+function drawChart() {
+  if (!H || $("#league").hidden) return;
+  const svg = $("#chart"), W = Math.max(300, svg.clientWidth || 340), narrow = W < 520;
+  const Ht = narrow ? 300 : 360, m = { l: 30, r: 30, t: 30, b: 26 };
+  const iw = W - m.l - m.r, ih = Ht - m.t - m.b, n = games;
+  const past = H.seasons.filter((s) => !s.current), cur = H.seasons.find((s) => s.current);
+  const played = cur.pts.length, curKnown = n <= played;
+  const ptsOf = (s) => s.pts[Math.min(n, s.pts.length) - 1];
+  const posOf = (s) => lineMode === "final" ? (s.current ? (curKnown && n < played ? s.pos[n - 1] : s.now) : s.final) : s.pos[n - 1];
+  const vals = H.seasons.map((s) => (s.current && !curKnown ? 0 : ptsOf(s)));
+  const yMax = Math.max(15, Math.ceil(Math.max(...vals) * 1.08 / 3) * 3);
+  const teams = H.teams, step = yMax <= 30 ? 3 : yMax <= 60 ? 10 : 20;
+  const xs = (i) => m.l + iw * (i + 0.5) / H.seasons.length, bw = iw / H.seasons.length * 0.7;
+  const yP = (v) => m.t + ih * (1 - v / yMax), yR = (p) => m.t + ih * (p - 1) / (teams - 1);
+  const avg = past.reduce((a, s) => a + ptsOf(s), 0) / past.length;
+  const fs = narrow ? 10 : 12;
+  let g = "";
+  for (let v = 0; v <= yMax; v += step) g += `<line x1="${m.l}" x2="${W - m.r}" y1="${yP(v)}" y2="${yP(v)}" stroke="#e3e7ef"/><text x="${m.l - 5}" y="${yP(v) + 4}" font-size="${fs}" text-anchor="end" fill="#66708a">${v}</text>`;
+  [1, 6, 12, 18, 24].filter((p) => p <= teams).forEach((p) => g += `<text x="${W - m.r + 5}" y="${yR(p) + 4}" font-size="${fs}" fill="#c8102e" opacity=".75">${p}</text>`);
+  H.seasons.forEach((s, i) => {
+    const sel = picked === i ? ' stroke-width="2.5"' : "";
+    if (s.current && !curKnown) {
+      g += `<rect x="${xs(i) - bw / 2}" y="${m.t}" width="${bw}" height="${ih}" fill="none" stroke="#1d5ba4" stroke-dasharray="3 3" opacity=".55"${sel}/>
+        <text x="${xs(i)}" y="${m.t + ih / 2}" font-size="${fs}" text-anchor="middle" fill="#1d5ba4" transform="rotate(-90 ${xs(i)} ${m.t + ih / 2})">not played yet</text>`;
+    } else {
+      const v = ptsOf(s);
+      g += `<rect x="${xs(i) - bw / 2}" y="${yP(v)}" width="${bw}" height="${yP(0) - yP(v)}" fill="${s.current ? "#1d5ba4" : "#94b3dd"}" stroke="#123e73"${sel}/>
+        <text x="${xs(i)}" y="${yP(0) - 6}" font-size="${fs + 1}" font-weight="700" text-anchor="middle" fill="${s.current ? "#fff" : "#123e73"}">${v}</text>`;
+    }
+    g += `<text x="${xs(i)}" y="${Ht - 8}" font-size="${narrow ? 9 : 12}" text-anchor="middle" fill="#14213d">${narrow ? s.season.slice(0, 2) : s.season}</text>`;
+  });
+  g += `<line x1="${xs(0)}" x2="${xs(H.seasons.length - 1)}" y1="${yP(avg)}" y2="${yP(avg)}" stroke="#123e73" stroke-width="1.5" stroke-dasharray="6 4"/>`;
+  const line = past.map((s, i) => [xs(i), yR(posOf(s))]);
+  g += `<path d="${smooth(line)}" fill="none" stroke="#c8102e" stroke-width="2.5"/>`;
+  const curPos = posOf(cur), ci = H.seasons.length - 1;
+  if (curPos) g += `<line x1="${line.at(-1)[0]}" y1="${line.at(-1)[1]}" x2="${xs(ci)}" y2="${yR(curPos)}" stroke="#c8102e" stroke-width="2.5" stroke-dasharray="6 4"/>`;
+  const label = (x, y, txt) => {
+    const w = txt.length * (fs * 0.62) + 8, ly = y - 13 < m.t - 18 ? y + 16 : y - 13;
+    return `<rect x="${x - w / 2}" y="${ly - fs + 1}" width="${w}" height="${fs + 5}" rx="3" fill="#fff" stroke="#e3c6cc"/><text x="${x}" y="${ly + 2}" font-size="${fs}" font-weight="700" text-anchor="middle" fill="#c8102e">${txt}</text>`;
+  };
+  line.forEach(([x, y], i) => g += `<circle cx="${x}" cy="${y}" r="${narrow ? 4 : 6}" fill="#c8102e"/>` + label(x, y, narrow ? String(posOf(past[i])) : ord(posOf(past[i]))));
+  if (curPos) g += `<circle cx="${xs(ci)}" cy="${yR(curPos)}" r="${narrow ? 5 : 7}" fill="#fff" stroke="#c8102e" stroke-width="2.5"/>` + label(xs(ci), yR(curPos), narrow ? String(curPos) : ord(curPos) + (lineMode === "final" || n === played ? " (now)" : ""));
+  H.seasons.forEach((s, i) => g += `<rect x="${xs(i) - iw / H.seasons.length / 2}" y="0" width="${iw / H.seasons.length}" height="${Ht}" fill="transparent" data-i="${i}"/>`);
+  svg.setAttribute("viewBox", `0 0 ${W} ${Ht}`);
+  svg.setAttribute("height", Ht);
+  svg.innerHTML = g;
+
+  $("#gamesout").textContent = `${n} game${n > 1 ? "s" : ""}`;
+  $("#charttitle").textContent = `QPR: points after ${n} game${n > 1 ? "s" : ""} vs ${lineMode === "final" ? "final position" : `position after ${n}`}`;
+  document.querySelectorAll("#linemode .n").forEach((e) => (e.textContent = n));
+  $("#legend").innerHTML = `<span><i style="width:16px;height:3px;background:#c8102e"></i>${lineMode === "final" ? "Final position" : `Position after ${n}`}</span>
+    <span><i style="width:11px;height:11px;border:2px solid #c8102e;border-radius:50%"></i>${lineMode === "final" ? `Now (after ${played})` : "This season"}</span>
+    <span><i style="width:16px;border-top:2px dashed #123e73"></i>Average of prior seasons (${avg.toFixed(1)})</span>
+    <span><i style="width:11px;height:11px;background:#94b3dd;border:1px solid #123e73"></i>Points after ${n}</span>`;
+  const s = H.seasons[picked ?? ci];
+  if (s.current && !curKnown) $("#detail").innerHTML = `<b>${s.season}</b>: only ${played} games played so far. ${s.pts.at(-1)} points and ${ord(s.now)} now. Drag the slider back to ${played} or less to compare.`;
+  else if (s.current) $("#detail").innerHTML = `<b>${s.season}</b>: ${ptsOf(s)} points after ${n} (${ord(s.pos[n - 1] ?? s.now)} at the time). ${ord(s.now)} now. Average after ${n}: ${avg.toFixed(1)}.`;
+  else $("#detail").innerHTML = `<b>${s.season}</b>: ${ptsOf(s)} points after ${n} (${ord(s.pos[n - 1])} at the time), finished <b>${ord(s.final)}</b> with ${s.pts.at(-1)} points.`;
+}
+$("#chart").addEventListener("click", (e) => { const r = e.target.closest("[data-i]"); if (r) { picked = +r.dataset.i; drawChart(); } });
+$("#games").addEventListener("input", (e) => { games = +e.target.value; drawChart(); });
+$("#linemode").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  lineMode = b.dataset.mode;
+  document.querySelectorAll("#linemode button").forEach((x) => x.classList.toggle("on", x === b));
+  drawChart();
+});
+addEventListener("resize", () => drawChart());
+
+/* ---------- boot ---------- */
+async function load(name) { const r = await fetch(`data/${name}.json`, { cache: "no-cache" }); if (!r.ok) throw new Error(name); return r.json(); }
+async function boot() {
+  try { [S, H] = await Promise.all([load("season"), load("history")]); }
+  catch (e) { $("#home").innerHTML = `<div class="card">Couldn't load the data. Check your signal and reopen the app.</div>`; return; }
+  try { N = await load("news"); } catch (e) { N = null; }
+  games = H.games || 1;
+  $("#games").max = 46; $("#games").value = games;
+  renderHome(); renderResults(); renderFixtures(); renderTable(); renderNews();
+  $("#footer").textContent = `Updated ${uk(S.updated, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} · Version ${APP_VERSION}`;
+  let tab = "home"; try { tab = localStorage.getItem("tab") || "home"; } catch (e) {}
+  show(tab);
+}
+boot();
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").then((reg) => {
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) reg.update(); });
+  });
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if (!reloaded) { reloaded = true; location.reload(); } });
+}
+</script>
+</body>
+</html>

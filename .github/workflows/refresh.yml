@@ -1,0 +1,36 @@
+name: Refresh data
+
+# Every two hours from 06:00 to 22:00 UK-ish time, pull QPR's results, fixtures, the table
+# and BBC headlines, and commit the data files if anything changed.
+on:
+  schedule:
+    - cron: "17 5-21/2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Rebuild data
+        env:
+          FOOTBALL_DATA_KEY: ${{ secrets.FOOTBALL_DATA_KEY }}
+        run: python tools/build_data.py
+      - name: Commit if changed
+        run: |
+          # The "updated" stamps change every run; only commit when real content changed.
+          if git diff -U0 -- data | grep -E '^[-+] ' | grep -vq '"updated"'; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git add data
+            git commit -m "Refresh QPR data"
+            git push
+          else
+            echo "No changes."
+          fi

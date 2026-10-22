@@ -1,0 +1,977 @@
+{
+ "season": "26/27",
+ "results": [
+  {
+   "id": 561886,
+   "utc": "2026-10-17T14:00:00Z",
+   "status": "FINISHED",
+   "matchday": 11,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 332,
+    "name": "Birmingham",
+    "crest": "https://crests.football-data.org/332.png"
+   },
+   "for": 0,
+   "against": 3,
+   "result": "L"
+  },
+  {
+   "id": 561880,
+   "utc": "2026-10-14T18:45:00Z",
+   "status": "FINISHED",
+   "matchday": 10,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 342,
+    "name": "Derby County",
+    "crest": "https://crests.football-data.org/342.png"
+   },
+   "for": 4,
+   "against": 1,
+   "result": "W"
+  },
+  {
+   "id": 561862,
+   "utc": "2026-10-09T19:00:00Z",
+   "status": "FINISHED",
+   "matchday": 9,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 563,
+    "name": "West Ham",
+    "crest": "https://crests.football-data.org/563.png"
+   },
+   "for": 1,
+   "against": 1,
+   "result": "D"
+  },
+  {
+   "id": 561853,
+   "utc": "2026-09-19T14:00:00Z",
+   "status": "FINISHED",
+   "matchday": 8,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 1081,
+    "name": "Preston NE",
+    "crest": "https://crests.football-data.org/1081.png"
+   },
+   "for": 2,
+   "against": 2,
+   "result": "D"
+  },
+  {
+   "id": 561839,
+   "utc": "2026-09-12T11:30:00Z",
+   "status": "FINISHED",
+   "matchday": 7,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 74,
+    "name": "West Brom",
+    "crest": "https://crests.football-data.org/74.png"
+   },
+   "for": 1,
+   "against": 1,
+   "result": "D"
+  },
+  {
+   "id": 561831,
+   "utc": "2026-09-09T19:00:00Z",
+   "status": "FINISHED",
+   "matchday": 6,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 348,
+    "name": "Charlton",
+    "crest": "https://crests.football-data.org/348.png"
+   },
+   "for": 0,
+   "against": 0,
+   "result": "D"
+  },
+  {
+   "id": 561809,
+   "utc": "2026-09-05T14:00:00Z",
+   "status": "FINISHED",
+   "matchday": 5,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 343,
+    "name": "Middlesbrough",
+    "crest": "https://crests.football-data.org/343.png"
+   },
+   "for": 0,
+   "against": 1,
+   "result": "L"
+  },
+  {
+   "id": 561807,
+   "utc": "2026-09-02T18:45:00Z",
+   "status": "FINISHED",
+   "matchday": 4,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 715,
+    "name": "Cardiff",
+    "crest": "https://crests.football-data.org/715.png"
+   },
+   "for": 2,
+   "against": 1,
+   "result": "W"
+  },
+  {
+   "id": 561792,
+   "utc": "2026-08-29T14:00:00Z",
+   "status": "FINISHED",
+   "matchday": 3,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 59,
+    "name": "Blackburn",
+    "crest": "https://crests.football-data.org/59.png"
+   },
+   "for": 2,
+   "against": 1,
+   "result": "W"
+  },
+  {
+   "id": 561783,
+   "utc": "2026-08-22T14:00:00Z",
+   "status": "FINISHED",
+   "matchday": 2,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 60,
+    "name": "Bolton",
+    "crest": "https://crests.football-data.org/60.png"
+   },
+   "for": 0,
+   "against": 0,
+   "result": "D"
+  },
+  {
+   "id": 561768,
+   "utc": "2026-08-15T14:00:00Z",
+   "status": "FINISHED",
+   "matchday": 1,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 325,
+    "name": "Portsmouth",
+    "crest": "https://crests.football-data.org/325.png"
+   },
+   "for": 3,
+   "against": 1,
+   "result": "W"
+  }
+ ],
+ "fixtures": [
+  {
+   "id": 561896,
+   "utc": "2026-10-24T14:00:00Z",
+   "status": "TIMED",
+   "matchday": 12,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 72,
+    "name": "Swansea",
+    "crest": "https://crests.football-data.org/72.png"
+   }
+  },
+  {
+   "id": 561914,
+   "utc": "2026-10-31T15:00:00Z",
+   "status": "TIMED",
+   "matchday": 13,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 340,
+    "name": "Southampton",
+    "crest": "https://crests.football-data.org/340.png"
+   }
+  },
+  {
+   "id": 561920,
+   "utc": "2026-11-03T19:45:00Z",
+   "status": "TIMED",
+   "matchday": 14,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 328,
+    "name": "Burnley",
+    "crest": "https://crests.football-data.org/328.png"
+   }
+  },
+  {
+   "id": 561929,
+   "utc": "2026-11-07T15:00:00Z",
+   "status": "TIMED",
+   "matchday": 15,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 1126,
+    "name": "Lincoln City",
+    "crest": "https://crests.football-data.org/1126.png"
+   }
+  },
+  {
+   "id": 561950,
+   "utc": "2026-11-21T12:30:00Z",
+   "status": "TIMED",
+   "matchday": 16,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 384,
+    "name": "Millwall",
+    "crest": "https://crests.football-data.org/384.png"
+   }
+  },
+  {
+   "id": 561960,
+   "utc": "2026-11-24T19:45:00Z",
+   "status": "TIMED",
+   "matchday": 17,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 68,
+    "name": "Norwich",
+    "crest": "https://crests.football-data.org/68.png"
+   }
+  },
+  {
+   "id": 561966,
+   "utc": "2026-11-28T15:00:00Z",
+   "status": "TIMED",
+   "matchday": 18,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 356,
+    "name": "Sheffield Utd",
+    "crest": "https://crests.football-data.org/356.png"
+   }
+  },
+  {
+   "id": 561986,
+   "utc": "2026-12-05T15:00:00Z",
+   "status": "TIMED",
+   "matchday": 19,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 70,
+    "name": "Stoke",
+    "crest": "https://crests.football-data.org/70.png"
+   }
+  },
+  {
+   "id": 561995,
+   "utc": "2026-12-08T19:45:00Z",
+   "status": "TIMED",
+   "matchday": 20,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 76,
+    "name": "Wolverhampton",
+    "crest": "https://crests.football-data.org/76.png"
+   }
+  },
+  {
+   "id": 562004,
+   "utc": "2026-12-12T12:30:00Z",
+   "status": "TIMED",
+   "matchday": 21,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 346,
+    "name": "Watford",
+    "crest": "https://crests.football-data.org/346.png"
+   }
+  },
+  {
+   "id": 562019,
+   "utc": "2026-12-19T15:00:00Z",
+   "status": "TIMED",
+   "matchday": 22,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 404,
+    "name": "Wrexham",
+    "crest": "https://crests.football-data.org/404.png"
+   }
+  },
+  {
+   "id": 562031,
+   "utc": "2026-12-26T15:00:00Z",
+   "status": "TIMED",
+   "matchday": 23,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 387,
+    "name": "Bristol City",
+    "crest": "https://crests.football-data.org/387.png"
+   }
+  },
+  {
+   "id": 562039,
+   "utc": "2026-12-29T19:45:00Z",
+   "status": "TIMED",
+   "matchday": 24,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 72,
+    "name": "Swansea",
+    "crest": "https://crests.football-data.org/72.png"
+   }
+  },
+  {
+   "id": 562051,
+   "utc": "2027-01-01T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 25,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 346,
+    "name": "Watford",
+    "crest": "https://crests.football-data.org/346.png"
+   }
+  },
+  {
+   "id": 562068,
+   "utc": "2027-01-16T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 26,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 332,
+    "name": "Birmingham",
+    "crest": "https://crests.football-data.org/332.png"
+   }
+  },
+  {
+   "id": 562076,
+   "utc": "2027-01-23T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 27,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 340,
+    "name": "Southampton",
+    "crest": "https://crests.football-data.org/340.png"
+   }
+  },
+  {
+   "id": 562092,
+   "utc": "2027-01-26T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 28,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 328,
+    "name": "Burnley",
+    "crest": "https://crests.football-data.org/328.png"
+   }
+  },
+  {
+   "id": 562102,
+   "utc": "2027-01-30T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 29,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 1126,
+    "name": "Lincoln City",
+    "crest": "https://crests.football-data.org/1126.png"
+   }
+  },
+  {
+   "id": 562114,
+   "utc": "2027-02-06T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 30,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 384,
+    "name": "Millwall",
+    "crest": "https://crests.football-data.org/384.png"
+   }
+  },
+  {
+   "id": 562122,
+   "utc": "2027-02-13T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 31,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 74,
+    "name": "West Brom",
+    "crest": "https://crests.football-data.org/74.png"
+   }
+  },
+  {
+   "id": 562140,
+   "utc": "2027-02-16T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 32,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 342,
+    "name": "Derby County",
+    "crest": "https://crests.football-data.org/342.png"
+   }
+  },
+  {
+   "id": 562149,
+   "utc": "2027-02-20T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 33,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 1081,
+    "name": "Preston NE",
+    "crest": "https://crests.football-data.org/1081.png"
+   }
+  },
+  {
+   "id": 562157,
+   "utc": "2027-02-27T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 34,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 563,
+    "name": "West Ham",
+    "crest": "https://crests.football-data.org/563.png"
+   }
+  },
+  {
+   "id": 562173,
+   "utc": "2027-03-02T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 35,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 60,
+    "name": "Bolton",
+    "crest": "https://crests.football-data.org/60.png"
+   }
+  },
+  {
+   "id": 562189,
+   "utc": "2027-03-06T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 36,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 325,
+    "name": "Portsmouth",
+    "crest": "https://crests.football-data.org/325.png"
+   }
+  },
+  {
+   "id": 562197,
+   "utc": "2027-03-13T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 37,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 356,
+    "name": "Sheffield Utd",
+    "crest": "https://crests.football-data.org/356.png"
+   }
+  },
+  {
+   "id": 562207,
+   "utc": "2027-03-16T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 38,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 70,
+    "name": "Stoke",
+    "crest": "https://crests.football-data.org/70.png"
+   }
+  },
+  {
+   "id": 562220,
+   "utc": "2027-03-20T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 39,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 387,
+    "name": "Bristol City",
+    "crest": "https://crests.football-data.org/387.png"
+   }
+  },
+  {
+   "id": 562239,
+   "utc": "2027-04-03T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 40,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 404,
+    "name": "Wrexham",
+    "crest": "https://crests.football-data.org/404.png"
+   }
+  },
+  {
+   "id": 562244,
+   "utc": "2027-04-06T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 41,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 348,
+    "name": "Charlton",
+    "crest": "https://crests.football-data.org/348.png"
+   }
+  },
+  {
+   "id": 562259,
+   "utc": "2027-04-10T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 42,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 343,
+    "name": "Middlesbrough",
+    "crest": "https://crests.football-data.org/343.png"
+   }
+  },
+  {
+   "id": 562271,
+   "utc": "2027-04-17T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 43,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 59,
+    "name": "Blackburn",
+    "crest": "https://crests.football-data.org/59.png"
+   }
+  },
+  {
+   "id": 562287,
+   "utc": "2027-04-21T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 44,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 715,
+    "name": "Cardiff",
+    "crest": "https://crests.football-data.org/715.png"
+   }
+  },
+  {
+   "id": 562295,
+   "utc": "2027-04-24T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 45,
+   "competition": "Championship",
+   "home": false,
+   "opponent": {
+    "id": 76,
+    "name": "Wolverhampton",
+    "crest": "https://crests.football-data.org/76.png"
+   }
+  },
+  {
+   "id": 562301,
+   "utc": "2027-05-01T00:00:00Z",
+   "status": "SCHEDULED",
+   "matchday": 46,
+   "competition": "Championship",
+   "home": true,
+   "opponent": {
+    "id": 68,
+    "name": "Norwich",
+    "crest": "https://crests.football-data.org/68.png"
+   }
+  }
+ ],
+ "table": [
+  {
+   "pos": 1,
+   "id": 72,
+   "name": "Swansea",
+   "crest": "https://crests.football-data.org/72.png",
+   "p": 11,
+   "w": 7,
+   "d": 2,
+   "l": 2,
+   "gf": 16,
+   "ga": 8,
+   "gd": 8,
+   "pts": 23
+  },
+  {
+   "pos": 2,
+   "id": 563,
+   "name": "West Ham",
+   "crest": "https://crests.football-data.org/563.png",
+   "p": 11,
+   "w": 6,
+   "d": 4,
+   "l": 1,
+   "gf": 30,
+   "ga": 12,
+   "gd": 18,
+   "pts": 22
+  },
+  {
+   "pos": 3,
+   "id": 343,
+   "name": "Middlesbrough",
+   "crest": "https://crests.football-data.org/343.png",
+   "p": 11,
+   "w": 6,
+   "d": 4,
+   "l": 1,
+   "gf": 22,
+   "ga": 16,
+   "gd": 6,
+   "pts": 22
+  },
+  {
+   "pos": 4,
+   "id": 332,
+   "name": "Birmingham",
+   "crest": "https://crests.football-data.org/332.png",
+   "p": 11,
+   "w": 5,
+   "d": 5,
+   "l": 1,
+   "gf": 20,
+   "ga": 11,
+   "gd": 9,
+   "pts": 20
+  },
+  {
+   "pos": 5,
+   "id": 74,
+   "name": "West Brom",
+   "crest": "https://crests.football-data.org/74.png",
+   "p": 11,
+   "w": 6,
+   "d": 2,
+   "l": 3,
+   "gf": 15,
+   "ga": 12,
+   "gd": 3,
+   "pts": 20
+  },
+  {
+   "pos": 6,
+   "id": 70,
+   "name": "Stoke",
+   "crest": "https://crests.football-data.org/70.png",
+   "p": 11,
+   "w": 6,
+   "d": 1,
+   "l": 4,
+   "gf": 18,
+   "ga": 16,
+   "gd": 2,
+   "pts": 19
+  },
+  {
+   "pos": 7,
+   "id": 76,
+   "name": "Wolverhampton",
+   "crest": "https://crests.football-data.org/76.png",
+   "p": 11,
+   "w": 5,
+   "d": 3,
+   "l": 3,
+   "gf": 19,
+   "ga": 16,
+   "gd": 3,
+   "pts": 18
+  },
+  {
+   "pos": 8,
+   "id": 340,
+   "name": "Southampton",
+   "crest": "https://crests.football-data.org/340.png",
+   "p": 11,
+   "w": 6,
+   "d": 3,
+   "l": 2,
+   "gf": 21,
+   "ga": 10,
+   "gd": 11,
+   "pts": 17
+  },
+  {
+   "pos": 9,
+   "id": 69,
+   "name": "QPR",
+   "crest": "https://crests.football-data.org/69.png",
+   "p": 11,
+   "w": 4,
+   "d": 5,
+   "l": 2,
+   "gf": 15,
+   "ga": 12,
+   "gd": 3,
+   "pts": 17
+  },
+  {
+   "pos": 10,
+   "id": 59,
+   "name": "Blackburn",
+   "crest": "https://crests.football-data.org/59.png",
+   "p": 11,
+   "w": 4,
+   "d": 3,
+   "l": 4,
+   "gf": 17,
+   "ga": 16,
+   "gd": 1,
+   "pts": 15
+  },
+  {
+   "pos": 11,
+   "id": 356,
+   "name": "Sheffield Utd",
+   "crest": "https://crests.football-data.org/356.png",
+   "p": 11,
+   "w": 4,
+   "d": 3,
+   "l": 4,
+   "gf": 15,
+   "ga": 14,
+   "gd": 1,
+   "pts": 15
+  },
+  {
+   "pos": 12,
+   "id": 384,
+   "name": "Millwall",
+   "crest": "https://crests.football-data.org/384.png",
+   "p": 11,
+   "w": 4,
+   "d": 3,
+   "l": 4,
+   "gf": 18,
+   "ga": 18,
+   "gd": 0,
+   "pts": 15
+  },
+  {
+   "pos": 13,
+   "id": 325,
+   "name": "Portsmouth",
+   "crest": "https://crests.football-data.org/325.png",
+   "p": 11,
+   "w": 4,
+   "d": 3,
+   "l": 4,
+   "gf": 14,
+   "ga": 14,
+   "gd": 0,
+   "pts": 15
+  },
+  {
+   "pos": 14,
+   "id": 404,
+   "name": "Wrexham",
+   "crest": "https://crests.football-data.org/404.png",
+   "p": 11,
+   "w": 3,
+   "d": 5,
+   "l": 3,
+   "gf": 15,
+   "ga": 16,
+   "gd": -1,
+   "pts": 14
+  },
+  {
+   "pos": 15,
+   "id": 60,
+   "name": "Bolton",
+   "crest": "https://crests.football-data.org/60.png",
+   "p": 11,
+   "w": 4,
+   "d": 2,
+   "l": 5,
+   "gf": 15,
+   "ga": 18,
+   "gd": -3,
+   "pts": 14
+  },
+  {
+   "pos": 16,
+   "id": 387,
+   "name": "Bristol City",
+   "crest": "https://crests.football-data.org/387.png",
+   "p": 11,
+   "w": 4,
+   "d": 2,
+   "l": 5,
+   "gf": 12,
+   "ga": 15,
+   "gd": -3,
+   "pts": 14
+  },
+  {
+   "pos": 17,
+   "id": 348,
+   "name": "Charlton",
+   "crest": "https://crests.football-data.org/348.png",
+   "p": 11,
+   "w": 3,
+   "d": 5,
+   "l": 3,
+   "gf": 10,
+   "ga": 15,
+   "gd": -5,
+   "pts": 14
+  },
+  {
+   "pos": 18,
+   "id": 1126,
+   "name": "Lincoln City",
+   "crest": "https://crests.football-data.org/1126.png",
+   "p": 11,
+   "w": 3,
+   "d": 3,
+   "l": 5,
+   "gf": 9,
+   "ga": 19,
+   "gd": -10,
+   "pts": 12
+  },
+  {
+   "pos": 19,
+   "id": 715,
+   "name": "Cardiff",
+   "crest": "https://crests.football-data.org/715.png",
+   "p": 11,
+   "w": 2,
+   "d": 5,
+   "l": 4,
+   "gf": 18,
+   "ga": 17,
+   "gd": 1,
+   "pts": 11
+  },
+  {
+   "pos": 20,
+   "id": 346,
+   "name": "Watford",
+   "crest": "https://crests.football-data.org/346.png",
+   "p": 11,
+   "w": 3,
+   "d": 2,
+   "l": 6,
+   "gf": 10,
+   "ga": 19,
+   "gd": -9,
+   "pts": 11
+  },
+  {
+   "pos": 21,
+   "id": 68,
+   "name": "Norwich",
+   "crest": "https://crests.football-data.org/68.png",
+   "p": 11,
+   "w": 3,
+   "d": 0,
+   "l": 8,
+   "gf": 17,
+   "ga": 21,
+   "gd": -4,
+   "pts": 9
+  },
+  {
+   "pos": 22,
+   "id": 328,
+   "name": "Burnley",
+   "crest": "https://crests.football-data.org/328.png",
+   "p": 11,
+   "w": 1,
+   "d": 5,
+   "l": 5,
+   "gf": 16,
+   "ga": 21,
+   "gd": -5,
+   "pts": 8
+  },
+  {
+   "pos": 23,
+   "id": 342,
+   "name": "Derby County",
+   "crest": "https://crests.football-data.org/342.png",
+   "p": 11,
+   "w": 1,
+   "d": 3,
+   "l": 7,
+   "gf": 9,
+   "ga": 20,
+   "gd": -11,
+   "pts": 6
+  },
+  {
+   "pos": 24,
+   "id": 1081,
+   "name": "Preston NE",
+   "crest": "https://crests.football-data.org/1081.png",
+   "p": 11,
+   "w": 1,
+   "d": 1,
+   "l": 9,
+   "gf": 9,
+   "ga": 24,
+   "gd": -15,
+   "pts": 4
+  }
+ ],
+ "updated": "2026-10-22T08:59+00:00"
+}

@@ -100,7 +100,7 @@ footer { text-align: center; font-size: 12px; color: var(--muted); padding: 8px 
       <div class="slider"><span class="muted">Games</span>
         <input id="games" type="range" min="1" max="46" step="1"><output id="gamesout"></output></div>
       <div class="seg" id="linemode">
-        <button data-mode="final" class="on">Final position</button>
+        <button data-mode="final" class="on">Current position</button>
         <button data-mode="then">Position after <span class="n"></span></button>
       </div>
       <div class="legend" id="legend"></div>
@@ -120,7 +120,7 @@ footer { text-align: center; font-size: 12px; color: var(--muted); padding: 8px 
   <button data-tab="news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>News</button>
 </nav>
 <script>
-const APP_VERSION = 1;
+const APP_VERSION = 2;
 const TEAM_ID = 69;
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -305,11 +305,16 @@ function drawChart() {
   else $("#detail").innerHTML = `<b>${s.season}</b>: ${ptsOf(s)} points after ${n} (${ord(s.pos[n - 1])} at the time), finished <b>${ord(s.final)}</b> with ${s.pts.at(-1)} points.`;
 }
 $("#chart").addEventListener("click", (e) => { const r = e.target.closest("[data-i]"); if (r) { picked = +r.dataset.i; drawChart(); } });
-$("#games").addEventListener("input", (e) => { games = +e.target.value; drawChart(); });
+function setMode(mode) {
+  lineMode = mode;
+  document.querySelectorAll("#linemode button").forEach((x) => x.classList.toggle("on", x.dataset.mode === mode));
+}
+// Moving the slider previews every season after N games; "Current position" snaps back to now.
+$("#games").addEventListener("input", (e) => { games = +e.target.value; setMode("then"); drawChart(); });
 $("#linemode").addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
-  lineMode = b.dataset.mode;
-  document.querySelectorAll("#linemode button").forEach((x) => x.classList.toggle("on", x === b));
+  if (b.dataset.mode === "final") { games = H.games; $("#games").value = games; picked = null; }
+  setMode(b.dataset.mode);
   drawChart();
 });
 addEventListener("resize", () => drawChart());

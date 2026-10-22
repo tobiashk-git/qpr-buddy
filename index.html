@@ -171,13 +171,15 @@ details summary::-webkit-details-marker { display: none; }
   <button data-tab="news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>News</button>
 </nav>
 <script>
-const APP_VERSION = 5;
+const APP_VERSION = 6;
 const TEAM_ID = 69;
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const ord = (n) => n + (["th", "st", "nd", "rd"][(n % 100 - 20) % 10] || ["th", "st", "nd", "rd"][n % 100] || "th");
 const uk = (iso, opts) => new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", ...opts }).format(new Date(iso));
-const kickoff = (iso) => uk(iso, { hour: "2-digit", minute: "2-digit" });
+// football-data.org gives unconfirmed kick-offs as midnight UTC; no league game starts then.
+const tbc = (iso) => iso.endsWith("T00:00:00Z");
+const kickoff = (iso) => (tbc(iso) ? "Time TBC" : uk(iso, { hour: "2-digit", minute: "2-digit" }));
 const longDate = (iso) => uk(iso, { weekday: "short", day: "numeric", month: "short" });
 const crest = (t) => t && t.crest ? `<img class="crest" src="${esc(t.crest)}" alt="" loading="lazy">` : `<span class="crest"></span>`;
 let S, H, N; // season, history, news
@@ -200,6 +202,10 @@ function resultRow(m) {
     <span class="score">${m.for}–${m.against}</span><span class="chev">›</span></div>`;
 }
 function countdown(iso) {
+  if (tbc(iso)) { // date only: count calendar days in UK time
+    const days = Math.round((Date.parse(iso.slice(0, 10)) - Date.parse(`${ukDay(new Date()).replace(/(\d{4})(\d\d)(\d\d)/, "$1-$2-$3")}`)) / 864e5);
+    return days > 1 ? `in ${days} days` : days === 1 ? "tomorrow" : "today";
+  }
   const ms = new Date(iso) - Date.now();
   if (ms < 0) return "Kicking off";
   const d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60;
@@ -220,8 +226,11 @@ function icsDate(iso) { return new Date(iso).toISOString().replace(/[-:]/g, "").
 function icsEvent(m) {
   const end = new Date(new Date(m.utc).getTime() + 115 * 6e4).toISOString();
   const title = m.home ? `QPR v ${m.opponent.name}` : `${m.opponent.name} v QPR`;
+  // unconfirmed kick-off: an all-day event on the match date
+  const day = m.utc.slice(0, 10).replaceAll("-", ""), next = new Date(Date.parse(m.utc.slice(0, 10)) + 864e5).toISOString().slice(0, 10).replaceAll("-", "");
+  const when = tbc(m.utc) ? [`DTSTART;VALUE=DATE:${day}`, `DTEND;VALUE=DATE:${next}`] : [`DTSTART:${icsDate(m.utc)}`, `DTEND:${icsDate(end)}`];
   return ["BEGIN:VEVENT", `UID:qpr-${m.id}@qpr-buddy`, `DTSTAMP:${icsDate(new Date().toISOString())}`,
-    `DTSTART:${icsDate(m.utc)}`, `DTEND:${icsDate(end)}`, `SUMMARY:${title}`,
+    ...when, `SUMMARY:${title}${tbc(m.utc) ? " (time TBC)" : ""}`,
     `LOCATION:${m.home ? "Loftus Road" : ""}`, `DESCRIPTION:${m.competition}`, "END:VEVENT"].join("\r\n");
 }
 function downloadIcs(list, name) {

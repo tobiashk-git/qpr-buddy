@@ -27,4 +27,11 @@ the data every two hours.
 Bump `VERSION` in sw.js and `APP_VERSION` in index.html together.
 
 ## Ideas
-- Push reminders before kick-off, cup fixtures, player stats
+- Cup fixtures, player stats
+- **Notifications (deferred until user feedback, 2026-10-22):**
+  1. Quick win: a VALARM (e.g. 1 hr before) in the .ics calendar events. No infrastructure needed.
+  2. Live push: Web Push (iOS 16.4+ home-screen apps, Android) via a free Cloudflare Worker.
+     KV stores subscriptions + per-alert prefs; a cron every minute checks ESPN during games and
+     sends goals / red cards / HT / FT / line-ups / kick-off reminders. The GitHub Action is too
+     slow for this. Needs a Cloudflare account (the user creates it). In-app Notifications screen
+     with a toggle per alert type + a master off switch.

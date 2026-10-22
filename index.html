@@ -171,7 +171,7 @@ details summary::-webkit-details-marker { display: none; }
   <button data-tab="news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>News</button>
 </nav>
 <script>
-const APP_VERSION = 4;
+const APP_VERSION = 5;
 const TEAM_ID = 69;
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -207,12 +207,12 @@ function countdown(iso) {
 }
 function fixtureRow(m) {
   const d = new Date(m.utc);
-  return `<div class="match">
+  return `<div class="match tap" data-fixture="${m.id}">
     <div class="datechip"><div class="m">${uk(m.utc, { weekday: "short" })}</div><div class="d">${uk(m.utc, { day: "numeric" })}</div></div>
     ${crest(m.opponent)}
     <div class="who"><b>${m.home ? "" : "@ "}${esc(m.opponent.name)}</b>
       <span class="muted">${m.status === "POSTPONED" ? "Postponed" : kickoff(m.utc)} · <span class="ha">${m.home ? "H" : "A"}</span>${m.competition === "Championship" ? "" : " · " + esc(m.competition)}</span></div>
-    <button class="cal" data-id="${m.id}" aria-label="Add to calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg></button></div>`;
+    <span class="chev" style="margin-right:4px">›</span><button class="cal" data-id="${m.id}" aria-label="Add to calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg></button></div>`;
 }
 
 /* ---------- calendar (.ics) ---------- */
@@ -539,6 +539,84 @@ function renderMatch(d) {
   if (rq?.roster?.length) html += `<h2>QPR line-up${rq.formation ? ` · ${esc(rq.formation)}` : ""}</h2><div class="card">${lineup(rq)}</div>`;
   if (ro?.roster?.length) html += `<div class="card"><details><summary>${esc(ro.team.displayName)} line-up${ro.formation ? ` · ${esc(ro.formation)}` : ""} ›</summary>${lineup(ro)}</details></div>`;
   $("#mvmore").outerHTML = html ? html + `<div class="livefoot">Match data from ESPN</div>` : `<div class="card muted">No extra details for this game yet.</div>`;
+}
+
+/* ---------- fixture detail: head to head (tap a fixture) ----------
+   League meetings since 2000/01 come from data/meetings.json (built once from football-data.co.uk),
+   plus any game against them already played this season. */
+let meetingsP = null;
+const loadMeetings = () => (meetingsP ??= load("meetings").then((d) => d.games).catch(() => { meetingsP = null; return null; }));
+function openFixture(id) {
+  const m = S.fixtures.find((f) => String(f.id) === String(id)); if (!m) return;
+  $("#matchview").hidden = false; $("#matchview").scrollTop = 0;
+  document.body.style.overflow = "hidden";
+  if (history.state?.match !== id) history.pushState({ match: id }, "");
+  const qpr = { name: "QPR", crest: "icons/crest.svg" };
+  const [home, away] = m.home ? [qpr, m.opponent] : [m.opponent, qpr];
+  const side = (t) => `<div>${t.crest ? `<img src="${esc(t.crest)}" alt="">` : ""}<div class="nm">${esc(t.name)}</div></div>`;
+  $("#mvbody").innerHTML = `<div class="card mhead"><div class="muted">${esc(m.competition)}${m.matchday ? ` · Matchday ${m.matchday}` : ""}</div>
+    <div class="board">${side(home)}<div class="sc" style="font-size:24px;color:var(--muted)">v</div>${side(away)}</div>
+    <div class="muted">${uk(m.utc, { weekday: "long", day: "numeric", month: "long", year: "numeric" })} · ${m.status === "POSTPONED" ? "Postponed" : kickoff(m.utc)}</div>
+    <div class="countdown" style="margin:4px 0 10px">${m.home ? "Loftus Road · " : ""}${m.status === "POSTPONED" ? "" : countdown(m.utc)}</div>
+    <button class="btn ghost" data-ics="${m.id}">Add to calendar</button></div>
+    ${formCard(m)}<div id="h2h" class="card muted">Loading head to head…</div>`;
+  loadMeetings().then((games) => { if (!$("#matchview").hidden && $("#h2h")) renderH2H(m, games); });
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-ics]");
+  if (b) { const m = S.fixtures.find((f) => String(f.id) === b.dataset.ics); if (m) downloadIcs([m], "qpr-match.ics"); return; }
+  if (e.target.closest(".cal")) return;
+  const r = e.target.closest("[data-fixture]"); if (r) openFixture(r.dataset.fixture);
+});
+
+function formCard(m) {
+  const me = S.table.find((r) => r.id === TEAM_ID), op = S.table.find((r) => r.id === m.opponent.id);
+  if (!me || !op) return "";
+  const badges = (f) => (f || "").split("").map((x) => `<span class="badge ${x}" style="width:22px;height:22px;font-size:11px">${x}</span>`).join(" ");
+  const col = (r, label) => `<div style="flex:1;text-align:center"><div class="muted" style="font-weight:700">${esc(label)}</div>
+    <div style="font-size:22px;font-weight:800">${ord(r.pos)}</div>
+    <div class="muted">${r.pts} pts from ${r.p} · GD ${r.gd > 0 ? "+" : ""}${r.gd}</div>
+    <div style="margin-top:6px">${badges(r.form)}</div></div>`;
+  return `<h2>Form &amp; table</h2><div class="card" style="display:flex;gap:8px">${col(me, "QPR")}${col(op, op.name)}</div>`;
+}
+
+function renderH2H(m, games) {
+  const op = S.table.find((r) => r.id === m.opponent.id), csv = op?.csv;
+  if (!games || !csv) { $("#h2h").textContent = games ? "No head-to-head data for this opponent." : "Couldn't load head to head. Check your signal."; return; }
+  // QPR's view of each meeting: oldest first
+  const list = games.filter((g) => g.home === csv || g.away === csv).map((g) => {
+    const qHome = g.home === "QPR", f = qHome ? g.hg : g.ag, a = qHome ? g.ag : g.hg;
+    return { date: g.date, season: g.season, comp: g.comp, qHome, hg: g.hg, ag: g.ag, f, a, res: f > a ? "W" : f === a ? "D" : "L" };
+  });
+  S.results.filter((r) => r.opponent.id === m.opponent.id && r.competition === "Championship").reverse().forEach((r) =>
+    list.push({ date: r.utc.slice(0, 10), season: S.season, comp: r.competition, qHome: r.home, hg: r.home ? r.for : r.against,
+      ag: r.home ? r.against : r.for, f: r.for, a: r.against, res: r.result }));
+  const name = esc(m.opponent.name);
+  if (!list.length) { $("#h2h").outerHTML = `<h2>Head to head</h2><div class="card muted">No league meetings with ${name} since 2000/01.</div>`; return; }
+
+  const rec = (xs) => ({ p: xs.length, w: xs.filter((x) => x.res === "W").length, d: xs.filter((x) => x.res === "D").length,
+    l: xs.filter((x) => x.res === "L").length, f: xs.reduce((s, x) => s + x.f, 0), a: xs.reduce((s, x) => s + x.a, 0) });
+  const recBlock = (r, title) => `<div class="stat"><div class="lbl"><b>${r.w}</b><span>${title}</span><b>${r.l}</b></div>
+      <div class="split"><i class="q" style="flex:${r.w || 0.0001}"></i><i style="flex:${r.d || 0.0001};background:#e2e6ee"></i><i style="flex:${r.l || 0.0001};background:#8a93a6"></i></div>
+      <div class="muted" style="text-align:center;margin-top:4px">${r.p} game${r.p === 1 ? "" : "s"} · ${r.d} draw${r.d === 1 ? "" : "s"} · goals ${r.f}–${r.a}</div></div>`;
+  const all = rec(list), venue = rec(list.filter((x) => x.qHome === m.home));
+  const best = list.filter((x) => x.res === "W").sort((x, y) => (y.f - y.a) - (x.f - x.a) || y.f - x.f)[0];
+  const worst = list.filter((x) => x.res === "L").sort((x, y) => (y.a - y.f) - (x.a - x.f) || y.a - x.a)[0];
+  const line = (x) => `${x.qHome ? "QPR" : name} ${x.hg}–${x.ag} ${x.qHome ? name : "QPR"} (${x.season})`;
+  const recent = list.slice(-8).reverse().map((x) => `<div class="match" style="padding:8px 0;border-top:1px solid var(--line)">
+      <span class="badge ${x.res}">${x.res}</span>
+      <div class="who"><b>${x.qHome ? `QPR ${x.hg}–${x.ag} ${name}` : `${name} ${x.hg}–${x.ag} QPR`}</b>
+      <span class="muted">${uk(x.date + "T12:00:00Z", { day: "numeric", month: "short", year: "numeric" })} · ${x.season}${x.comp === "Championship" ? "" : " · " + esc(x.comp)}</span></div></div>`).join("");
+
+  $("#h2h").outerHTML = `<h2>Head to head · league since 2000/01</h2><div class="card">
+      <div class="stat"><div class="lbl" style="font-weight:700"><b>QPR wins</b><b>${name} wins</b></div></div>
+      ${recBlock(all, "All meetings")}
+      ${venue.p ? recBlock(venue, m.home ? "At Loftus Road" : `Away at ${name}`) : ""}
+      ${best ? `<div class="muted" style="margin-top:8px">Biggest QPR win: <b style="color:var(--ink)">${line(best)}</b></div>` : ""}
+      ${worst ? `<div class="muted">Heaviest defeat: <b style="color:var(--ink)">${line(worst)}</b></div>` : ""}
+    </div>
+    <h2>Last meetings</h2><div class="card list" style="padding-top:6px">${recent}</div>
+    <div class="livefoot">League games only (cups not included)</div>`;
 }
 
 /* ---------- boot ---------- */

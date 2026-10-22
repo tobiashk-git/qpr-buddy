@@ -56,9 +56,9 @@ def season_label(start):
 
 # ---------- past seasons (football-data.co.uk) ----------
 
-def fetch_csv(start):
+def fetch_csv(start, div="E1"):
     code = f"{start % 100:02d}{(start + 1) % 100:02d}"
-    text = get(f"https://www.football-data.co.uk/mmz4281/{code}/E1.csv").decode("utf-8-sig", errors="replace")
+    text = get(f"https://www.football-data.co.uk/mmz4281/{code}/{div}.csv").decode("utf-8-sig", errors="replace")
     rows = [row for row in csv.DictReader(io.StringIO(text)) if row.get("FTHG") not in (None, "")]
     for row in rows:
         d, m, y = row["Date"].split("/")
@@ -139,6 +139,36 @@ def build_season():
     return start, {"season": season_label(start), "results": results, "fixtures": fixtures, "table": table}
 
 
+# ---------- name matching + form (for head-to-head) ----------
+
+# football-data.org short names that don't match the results files. Add any new ones here
+# (the refresh prints "unmatched" for a team it can't pair up).
+NAME_OVERRIDES = {"Wolverhampton": "Wolves", "Sheffield Utd": "Sheffield United", "Sheffield Wed": "Sheffield Weds",
+                  "Nottingham": "Nott'm Forest", "Nottingham Forest": "Nott'm Forest", "Brighton Hove": "Brighton",
+                  "Man United": "Man United", "Man City": "Man City", "Bristol Rovers": "Bristol Rvs"}
+
+
+def add_csv_names(table, rows):
+    """Give each table row its results-file name ("csv") and last-five league form."""
+    names = sorted({r["HomeTeam"] for r in rows} | {r["AwayTeam"] for r in rows})
+    form = {}
+    for r in rows:
+        hg, ag = int(r["FTHG"]), int(r["FTAG"])
+        form.setdefault(r["HomeTeam"], []).append("W" if hg > ag else "D" if hg == ag else "L")
+        form.setdefault(r["AwayTeam"], []).append("W" if ag > hg else "D" if hg == ag else "L")
+    for row in table:
+        n = row["name"]
+        csv_name = NAME_OVERRIDES.get(n) if NAME_OVERRIDES.get(n) in names else n if n in names else None
+        if not csv_name:
+            close = [c for c in names if n.startswith(c) or c.startswith(n)]
+            csv_name = close[0] if len(close) == 1 else None
+        if csv_name:
+            row["csv"] = csv_name
+            row["form"] = "".join(form.get(csv_name, [])[-5:])
+        else:
+            print("unmatched:", n)
+
+
 # ---------- news ----------
 
 def build_news():
@@ -161,6 +191,12 @@ def main():
 
     start, season = build_season()
     season["updated"] = stamp
+    try:
+        cur_rows = fetch_csv(start)
+        add_csv_names(season["table"], cur_rows)
+    except Exception as e:
+        cur_rows = None
+        print("current results file failed:", e)
     (data / "season.json").write_text(json.dumps(season, indent=1))
 
     me = next(r for r in season["table"] if r["id"] == TEAM_ID)
@@ -174,7 +210,7 @@ def main():
             total += {"W": 3, "D": 1, "L": 0}[m["result"]]
             cur["pts"].append(total)
     try:
-        cur["pos"] = progress(fetch_csv(start), start, final=False)["pos"][:len(cur["pts"])]
+        cur["pos"] = progress(cur_rows, start, final=False)["pos"][:len(cur["pts"])]
     except Exception as e:
         print("current-season positions failed:", e)
     cur["pos"] = (cur["pos"] + [None] * len(cur["pts"]))[:len(cur["pts"])]

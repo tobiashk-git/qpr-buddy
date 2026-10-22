@@ -648,7 +648,9 @@
    "gf": 16,
    "ga": 8,
    "gd": 8,
-   "pts": 23
+   "pts": 23,
+   "csv": "Swansea",
+   "form": "WWWWL"
   },
   {
    "pos": 2,
@@ -662,7 +664,9 @@
    "gf": 30,
    "ga": 12,
    "gd": 18,
-   "pts": 22
+   "pts": 22,
+   "csv": "West Ham",
+   "form": "WDDWW"
   },
   {
    "pos": 3,
@@ -676,7 +680,9 @@
    "gf": 22,
    "ga": 16,
    "gd": 6,
-   "pts": 22
+   "pts": 22,
+   "csv": "Middlesbrough",
+   "form": "DDWWD"
   },
   {
    "pos": 4,
@@ -690,7 +696,9 @@
    "gf": 20,
    "ga": 11,
    "gd": 9,
-   "pts": 20
+   "pts": 20,
+   "csv": "Birmingham",
+   "form": "WDWWW"
   },
   {
    "pos": 5,
@@ -704,7 +712,9 @@
    "gf": 15,
    "ga": 12,
    "gd": 3,
-   "pts": 20
+   "pts": 20,
+   "csv": "West Brom",
+   "form": "DLLWW"
   },
   {
    "pos": 6,
@@ -718,7 +728,9 @@
    "gf": 18,
    "ga": 16,
    "gd": 2,
-   "pts": 19
+   "pts": 19,
+   "csv": "Stoke",
+   "form": "WWWLW"
   },
   {
    "pos": 7,
@@ -732,7 +744,9 @@
    "gf": 19,
    "ga": 16,
    "gd": 3,
-   "pts": 18
+   "pts": 18,
+   "csv": "Wolves",
+   "form": "WLLWD"
   },
   {
    "pos": 8,
@@ -746,7 +760,9 @@
    "gf": 21,
    "ga": 10,
    "gd": 11,
-   "pts": 17
+   "pts": 17,
+   "csv": "Southampton",
+   "form": "WLWWD"
   },
   {
    "pos": 9,
@@ -760,7 +776,9 @@
    "gf": 15,
    "ga": 12,
    "gd": 3,
-   "pts": 17
+   "pts": 17,
+   "csv": "QPR",
+   "form": "DDDWL"
   },
   {
    "pos": 10,
@@ -774,7 +792,9 @@
    "gf": 17,
    "ga": 16,
    "gd": 1,
-   "pts": 15
+   "pts": 15,
+   "csv": "Blackburn",
+   "form": "WDWWL"
   },
   {
    "pos": 11,
@@ -788,7 +808,9 @@
    "gf": 15,
    "ga": 14,
    "gd": 1,
-   "pts": 15
+   "pts": 15,
+   "csv": "Sheffield United",
+   "form": "LLWLW"
   },
   {
    "pos": 12,
@@ -802,7 +824,9 @@
    "gf": 18,
    "ga": 18,
    "gd": 0,
-   "pts": 15
+   "pts": 15,
+   "csv": "Millwall",
+   "form": "DDWLD"
   },
   {
    "pos": 13,
@@ -816,7 +840,9 @@
    "gf": 14,
    "ga": 14,
    "gd": 0,
-   "pts": 15
+   "pts": 15,
+   "csv": "Portsmouth",
+   "form": "DLWWD"
   },
   {
    "pos": 14,
@@ -830,7 +856,9 @@
    "gf": 15,
    "ga": 16,
    "gd": -1,
-   "pts": 14
+   "pts": 14,
+   "csv": "Wrexham",
+   "form": "LWDLW"
   },
   {
    "pos": 15,
@@ -844,7 +872,9 @@
    "gf": 15,
    "ga": 18,
    "gd": -3,
-   "pts": 14
+   "pts": 14,
+   "csv": "Bolton",
+   "form": "WWLWD"
   },
   {
    "pos": 16,
@@ -858,7 +888,9 @@
    "gf": 12,
    "ga": 15,
    "gd": -3,
-   "pts": 14
+   "pts": 14,
+   "csv": "Bristol City",
+   "form": "LWDLL"
   },
   {
    "pos": 17,
@@ -872,7 +904,9 @@
    "gf": 10,
    "ga": 15,
    "gd": -5,
-   "pts": 14
+   "pts": 14,
+   "csv": "Charlton",
+   "form": "DLDDL"
   },
   {
    "pos": 18,
@@ -886,7 +920,9 @@
    "gf": 9,
    "ga": 19,
    "gd": -10,
-   "pts": 12
+   "pts": 12,
+   "csv": "Lincoln",
+   "form": "WLLLD"
   },
   {
    "pos": 19,
@@ -900,7 +936,9 @@
    "gf": 18,
    "ga": 17,
    "gd": 1,
-   "pts": 11
+   "pts": 11,
+   "csv": "Cardiff",
+   "form": "LWLWD"
   },
   {
    "pos": 20,
@@ -914,7 +952,9 @@
    "gf": 10,
    "ga": 19,
    "gd": -9,
-   "pts": 11
+   "pts": 11,
+   "csv": "Watford",
+   "form": "LLLLW"
   },
   {
    "pos": 21,
@@ -928,7 +968,9 @@
    "gf": 17,
    "ga": 21,
    "gd": -4,
-   "pts": 9
+   "pts": 9,
+   "csv": "Norwich",
+   "form": "LLLLL"
   },
   {
    "pos": 22,
@@ -942,7 +984,9 @@
    "gf": 16,
    "ga": 21,
    "gd": -5,
-   "pts": 8
+   "pts": 8,
+   "csv": "Burnley",
+   "form": "LDWDL"
   },
   {
    "pos": 23,
@@ -956,7 +1000,9 @@
    "gf": 9,
    "ga": 20,
    "gd": -11,
-   "pts": 6
+   "pts": 6,
+   "csv": "Derby",
+   "form": "LDDLL"
   },
   {
    "pos": 24,
@@ -970,8 +1016,10 @@
    "gf": 9,
    "ga": 24,
    "gd": -15,
-   "pts": 4
+   "pts": 4,
+   "csv": "Preston",
+   "form": "LDLLL"
   }
  ],
- "updated": "2026-10-22T08:59+00:00"
+ "updated": "2026-10-22T11:49+00:00"
 }

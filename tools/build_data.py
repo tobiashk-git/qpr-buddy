@@ -136,7 +136,50 @@ def build_season():
               "l": r["lost"], "gf": r["goalsFor"], "ga": r["goalsAgainst"], "gd": r["goalDifference"],
               "pts": r["points"]} for r in total["table"]]
     start = int(st["season"]["startDate"][:4])
+
+    # Each team's ESPN id ("espn"): the phone reads ESPN's table and scoreboard, which update
+    # minutes after full time (football-data.org's free tier can lag by a day).
+    full = {r["team"]["id"]: r["team"]["name"] for r in total["table"]}
+    try:
+        espn = espn_ids()
+    except Exception as e:
+        espn = {}
+        print("espn teams failed:", e)
+    for row in table:
+        row["espn"] = espn.get(norm(full[row["id"]]))
+        if not row["espn"]:
+            print("no espn id:", full[row["id"]])
+    try:
+        table = espn_table(table)
+    except Exception as e:
+        print("espn table failed, using football-data.org's:", e)
     return start, {"season": season_label(start), "results": results, "fixtures": fixtures, "table": table}
+
+
+def norm(name):
+    words = [w for w in name.lower().replace("&", "and").replace(".", "").split() if w not in ("fc", "afc")]
+    return " ".join(words)
+
+
+def espn_table(table):
+    """Overwrite the numbers with ESPN's standings (same shape the phone uses)."""
+    d = json.loads(get("https://site.api.espn.com/apis/v2/sports/soccer/eng.2/standings"))
+    stats = {}
+    for e in d["children"][0]["standings"]["entries"]:
+        v = {x["name"]: x.get("value") for x in e["stats"]}
+        stats[e["team"]["id"]] = {"pos": int(v["rank"]), "p": int(v["gamesPlayed"]), "w": int(v["wins"]), "d": int(v["ties"]),
+                                  "l": int(v["losses"]), "gf": int(v["pointsFor"]), "ga": int(v["pointsAgainst"]),
+                                  "gd": int(v["pointDifferential"]), "pts": int(v["points"])}
+    if any(r.get("espn") not in stats for r in table):
+        raise ValueError("team missing from ESPN standings")
+    for r in table:
+        r.update(stats[r["espn"]])
+    return sorted(table, key=lambda r: r["pos"])
+
+
+def espn_ids():
+    d = json.loads(get("https://site.api.espn.com/apis/site/v2/sports/soccer/eng.2/teams"))
+    return {norm(t["team"]["displayName"]): t["team"]["id"] for t in d["sports"][0]["leagues"][0]["teams"]}
 
 
 # ---------- name matching + form (for head-to-head) ----------

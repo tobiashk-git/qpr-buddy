@@ -15,7 +15,10 @@ the data every two hours.
 - **News** - BBC Sport QPR feed + link to qpr.co.uk/news (the club site blocks scripted fetches)
 
 ## Data (tools/build_data.py)
-- football-data.org v4 (free key, `FOOTBALL_DATA_KEY` secret / local `.env`): QPR matches, ELC standings
+- football-data.org v4 (free key, `FOOTBALL_DATA_KEY` secret / local `.env`): QPR matches + team list. Its free-tier
+  competition feed can lag a day, so the TABLE numbers come from ESPN standings (keyless); the phone also
+  reads ESPN standings live (refresh every 5 min, 1 min while games are on) and offers "As it stands"
+  (current scores of in-play games) when Championship games are live
 - football-data.co.uk E1.csv per season (no key): past seasons game by game for the chart
 - data/meetings.json: every QPR league game 2000/01 to last season (tools/build_meetings.py, run by
   hand each summer); this season's meetings come from season.json. Table rows carry "csv" (results-file

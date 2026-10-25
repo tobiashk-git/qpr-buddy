@@ -652,6 +652,7 @@
    "ga": 17,
    "gd": 10,
    "pts": 25,
+   "espn": "369",
    "csv": "Middlesbrough",
    "form": "DDWWD"
   },
@@ -665,9 +666,10 @@
    "d": 2,
    "l": 3,
    "gf": 16,
-   "ga": 12,
-   "gd": 4,
+   "ga": 13,
+   "gd": 3,
    "pts": 23,
+   "espn": "318",
    "csv": "Swansea",
    "form": "WWWWL"
   },
@@ -684,6 +686,7 @@
    "ga": 15,
    "gd": 17,
    "pts": 22,
+   "espn": "371",
    "csv": "West Ham",
    "form": "WDDWW"
   },
@@ -700,11 +703,29 @@
    "ga": 16,
    "gd": 4,
    "pts": 21,
+   "espn": "380",
    "csv": "Wolves",
    "form": "WLLWD"
   },
   {
    "pos": 5,
+   "id": 74,
+   "name": "West Brom",
+   "crest": "https://crests.football-data.org/74.png",
+   "p": 12,
+   "w": 6,
+   "d": 3,
+   "l": 3,
+   "gf": 16,
+   "ga": 13,
+   "gd": 3,
+   "pts": 21,
+   "espn": "383",
+   "csv": "West Brom",
+   "form": "DLLWW"
+  },
+  {
+   "pos": 6,
    "id": 340,
    "name": "Southampton",
    "crest": "https://crests.football-data.org/340.png",
@@ -716,11 +737,12 @@
    "ga": 12,
    "gd": 12,
    "pts": 20,
+   "espn": "376",
    "csv": "Southampton",
    "form": "WLWWD"
   },
   {
-   "pos": 6,
+   "pos": 7,
    "id": 332,
    "name": "Birmingham",
    "crest": "https://crests.football-data.org/332.png",
@@ -732,11 +754,12 @@
    "ga": 12,
    "gd": 8,
    "pts": 20,
+   "espn": "392",
    "csv": "Birmingham",
    "form": "WDWWW"
   },
   {
-   "pos": 7,
+   "pos": 8,
    "id": 69,
    "name": "QPR",
    "crest": "https://crests.football-data.org/69.png",
@@ -744,28 +767,13 @@
    "w": 5,
    "d": 5,
    "l": 2,
-   "gf": 19,
+   "gf": 20,
    "ga": 12,
-   "gd": 7,
+   "gd": 8,
    "pts": 20,
+   "espn": "334",
    "csv": "QPR",
    "form": "DDDWL"
-  },
-  {
-   "pos": 8,
-   "id": 74,
-   "name": "West Brom",
-   "crest": "https://crests.football-data.org/74.png",
-   "p": 11,
-   "w": 6,
-   "d": 2,
-   "l": 3,
-   "gf": 15,
-   "ga": 12,
-   "gd": 3,
-   "pts": 20,
-   "csv": "West Brom",
-   "form": "DLLWW"
   },
   {
    "pos": 9,
@@ -780,6 +788,7 @@
    "ga": 16,
    "gd": 2,
    "pts": 20,
+   "espn": "336",
    "csv": "Stoke",
    "form": "WWWLW"
   },
@@ -796,6 +805,7 @@
    "ga": 16,
    "gd": 3,
    "pts": 18,
+   "espn": "365",
    "csv": "Blackburn",
    "form": "WDWWL"
   },
@@ -812,6 +822,7 @@
    "ga": 15,
    "gd": 1,
    "pts": 18,
+   "espn": "385",
    "csv": "Portsmouth",
    "form": "DLWWD"
   },
@@ -828,6 +839,7 @@
    "ga": 15,
    "gd": 1,
    "pts": 16,
+   "espn": "398",
    "csv": "Sheffield United",
    "form": "LLWLW"
   },
@@ -844,6 +856,7 @@
    "ga": 20,
    "gd": -1,
    "pts": 15,
+   "espn": "391",
    "csv": "Millwall",
    "form": "DDWLD"
   },
@@ -860,6 +873,7 @@
    "ga": 15,
    "gd": -3,
    "pts": 15,
+   "espn": "333",
    "csv": "Bristol City",
    "form": "LWDLL"
   },
@@ -876,6 +890,7 @@
    "ga": 20,
    "gd": -7,
    "pts": 15,
+   "espn": "314",
    "csv": "Lincoln",
    "form": "WLLLD"
   },
@@ -892,6 +907,7 @@
    "ga": 17,
    "gd": 2,
    "pts": 14,
+   "espn": "347",
    "csv": "Cardiff",
    "form": "LWLWD"
   },
@@ -908,27 +924,12 @@
    "ga": 18,
    "gd": -3,
    "pts": 14,
+   "espn": "352",
    "csv": "Wrexham",
    "form": "LWDLW"
   },
   {
    "pos": 18,
-   "id": 348,
-   "name": "Charlton",
-   "crest": "https://crests.football-data.org/348.png",
-   "p": 12,
-   "w": 3,
-   "d": 5,
-   "l": 4,
-   "gf": 12,
-   "ga": 18,
-   "gd": -6,
-   "pts": 14,
-   "csv": "Charlton",
-   "form": "DLDDL"
-  },
-  {
-   "pos": 19,
    "id": 60,
    "name": "Bolton",
    "crest": "https://crests.football-data.org/60.png",
@@ -940,8 +941,26 @@
    "ga": 23,
    "gd": -7,
    "pts": 14,
+   "espn": "358",
    "csv": "Bolton",
    "form": "WWLWD"
+  },
+  {
+   "pos": 19,
+   "id": 348,
+   "name": "Charlton",
+   "crest": "https://crests.football-data.org/348.png",
+   "p": 12,
+   "w": 3,
+   "d": 5,
+   "l": 4,
+   "gf": 11,
+   "ga": 18,
+   "gd": -7,
+   "pts": 14,
+   "espn": "372",
+   "csv": "Charlton",
+   "form": "DLDDL"
   },
   {
    "pos": 20,
@@ -953,9 +972,10 @@
    "d": 0,
    "l": 8,
    "gf": 20,
-   "ga": 23,
-   "gd": -3,
+   "ga": 22,
+   "gd": -2,
    "pts": 12,
+   "espn": "381",
    "csv": "Norwich",
    "form": "LLLLL"
   },
@@ -972,6 +992,7 @@
    "ga": 20,
    "gd": -10,
    "pts": 11,
+   "espn": "395",
    "csv": "Watford",
    "form": "LLLLW"
   },
@@ -988,6 +1009,7 @@
    "ga": 25,
    "gd": -8,
    "pts": 8,
+   "espn": "379",
    "csv": "Burnley",
    "form": "LDWDL"
   },
@@ -1004,6 +1026,7 @@
    "ga": 21,
    "gd": -11,
    "pts": 7,
+   "espn": "374",
    "csv": "Derby",
    "form": "LDDLL"
   },
@@ -1012,17 +1035,18 @@
    "id": 1081,
    "name": "Preston NE",
    "crest": "https://crests.football-data.org/1081.png",
-   "p": 11,
+   "p": 12,
    "w": 1,
-   "d": 1,
+   "d": 2,
    "l": 9,
-   "gf": 9,
-   "ga": 24,
+   "gf": 10,
+   "ga": 25,
    "gd": -15,
-   "pts": 4,
+   "pts": 5,
+   "espn": "394",
    "csv": "Preston",
    "form": "LDLLL"
   }
  ],
- "updated": "2026-10-24T21:39+00:00"
+ "updated": "2026-10-25T11:13+00:00"
 }

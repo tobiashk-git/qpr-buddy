@@ -1,7 +1,7 @@
 // The page and the data files are network-first so changes show straight away, falling back
 // to the saved copy when there is no signal (or the network takes over 4 s).
 // Icons and the manifest are cache-first. Bump VERSION (and APP_VERSION in index.html) on every release.
-const VERSION = 8;
+const VERSION = 9;
 const CACHE = `qpr-buddy-v${VERSION}`;
 const SHELL = ["./", "index.html", "manifest.webmanifest", "data/season.json", "data/history.json", "data/news.json", "icons/crest.svg", "icons/icon-180.png", "icons/icon-192.png"];
 

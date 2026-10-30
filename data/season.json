@@ -794,6 +794,23 @@
   },
   {
    "pos": 10,
+   "id": 356,
+   "name": "Sheffield Utd",
+   "crest": "https://crests.football-data.org/356.png",
+   "p": 13,
+   "w": 5,
+   "d": 4,
+   "l": 4,
+   "gf": 17,
+   "ga": 15,
+   "gd": 2,
+   "pts": 19,
+   "espn": "398",
+   "csv": "Sheffield United",
+   "form": "LWLWD"
+  },
+  {
+   "pos": 11,
    "id": 59,
    "name": "Blackburn",
    "crest": "https://crests.football-data.org/59.png",
@@ -810,7 +827,7 @@
    "form": "DWWLW"
   },
   {
-   "pos": 11,
+   "pos": 12,
    "id": 325,
    "name": "Portsmouth",
    "crest": "https://crests.football-data.org/325.png",
@@ -825,23 +842,6 @@
    "espn": "385",
    "csv": "Portsmouth",
    "form": "LWWDW"
-  },
-  {
-   "pos": 12,
-   "id": 356,
-   "name": "Sheffield Utd",
-   "crest": "https://crests.football-data.org/356.png",
-   "p": 12,
-   "w": 4,
-   "d": 4,
-   "l": 4,
-   "gf": 16,
-   "ga": 15,
-   "gd": 1,
-   "pts": 16,
-   "espn": "398",
-   "csv": "Sheffield United",
-   "form": "LWLWD"
   },
   {
    "pos": 13,
@@ -916,13 +916,13 @@
    "id": 404,
    "name": "Wrexham",
    "crest": "https://crests.football-data.org/404.png",
-   "p": 12,
+   "p": 13,
    "w": 3,
    "d": 5,
-   "l": 4,
+   "l": 5,
    "gf": 15,
-   "ga": 18,
-   "gd": -3,
+   "ga": 19,
+   "gd": -4,
    "pts": 14,
    "espn": "352",
    "csv": "Wrexham",
@@ -1048,5 +1048,5 @@
    "form": "DLLLD"
   }
  ],
- "updated": "2026-10-29T18:59+00:00"
+ "updated": "2026-10-30T23:01+00:00"
 }

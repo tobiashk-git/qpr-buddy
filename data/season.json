@@ -214,7 +214,7 @@
   {
    "id": 561920,
    "utc": "2026-11-03T19:45:00Z",
-   "status": "TIMED",
+   "status": "IN_PLAY",
    "matchday": 14,
    "competition": "Championship",
    "home": true,
@@ -1051,5 +1051,5 @@
    "form": "LLLDL"
   }
  ],
- "updated": "2026-11-02T23:08+00:00"
+ "updated": "2026-11-03T20:09+00:00"
 }

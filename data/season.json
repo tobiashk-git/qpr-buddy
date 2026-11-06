@@ -230,7 +230,7 @@
   {
    "id": 561929,
    "utc": "2026-11-07T15:00:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 15,
    "competition": "Championship",
    "home": true,
@@ -243,7 +243,7 @@
   {
    "id": 561950,
    "utc": "2026-11-21T12:30:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 16,
    "competition": "Championship",
    "home": false,
@@ -256,7 +256,7 @@
   {
    "id": 561960,
    "utc": "2026-11-24T19:45:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 17,
    "competition": "Championship",
    "home": false,
@@ -269,7 +269,7 @@
   {
    "id": 561966,
    "utc": "2026-11-28T15:00:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 18,
    "competition": "Championship",
    "home": true,
@@ -282,7 +282,7 @@
   {
    "id": 561986,
    "utc": "2026-12-05T15:00:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 19,
    "competition": "Championship",
    "home": false,
@@ -295,7 +295,7 @@
   {
    "id": 561995,
    "utc": "2026-12-08T19:45:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 20,
    "competition": "Championship",
    "home": true,
@@ -308,7 +308,7 @@
   {
    "id": 562004,
    "utc": "2026-12-12T12:30:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 21,
    "competition": "Championship",
    "home": true,
@@ -321,7 +321,7 @@
   {
    "id": 562019,
    "utc": "2026-12-19T15:00:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 22,
    "competition": "Championship",
    "home": false,
@@ -334,7 +334,7 @@
   {
    "id": 562031,
    "utc": "2026-12-26T15:00:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 23,
    "competition": "Championship",
    "home": true,
@@ -347,7 +347,7 @@
   {
    "id": 562039,
    "utc": "2026-12-29T19:45:00Z",
-   "status": "TIMED",
+   "status": "SCHEDULED",
    "matchday": 24,
    "competition": "Championship",
    "home": false,
@@ -359,7 +359,7 @@
   },
   {
    "id": 562051,
-   "utc": "2027-01-01T00:00:00Z",
+   "utc": "2027-01-01T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 25,
    "competition": "Championship",
@@ -372,7 +372,7 @@
   },
   {
    "id": 562068,
-   "utc": "2027-01-16T00:00:00Z",
+   "utc": "2027-01-16T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 26,
    "competition": "Championship",
@@ -385,7 +385,7 @@
   },
   {
    "id": 562076,
-   "utc": "2027-01-23T00:00:00Z",
+   "utc": "2027-01-23T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 27,
    "competition": "Championship",
@@ -398,7 +398,7 @@
   },
   {
    "id": 562092,
-   "utc": "2027-01-26T00:00:00Z",
+   "utc": "2027-01-26T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 28,
    "competition": "Championship",
@@ -411,7 +411,7 @@
   },
   {
    "id": 562102,
-   "utc": "2027-01-30T00:00:00Z",
+   "utc": "2027-01-29T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 29,
    "competition": "Championship",
@@ -424,7 +424,7 @@
   },
   {
    "id": 562114,
-   "utc": "2027-02-06T00:00:00Z",
+   "utc": "2027-02-06T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 30,
    "competition": "Championship",
@@ -437,7 +437,7 @@
   },
   {
    "id": 562122,
-   "utc": "2027-02-13T00:00:00Z",
+   "utc": "2027-02-13T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 31,
    "competition": "Championship",
@@ -450,7 +450,7 @@
   },
   {
    "id": 562140,
-   "utc": "2027-02-16T00:00:00Z",
+   "utc": "2027-02-16T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 32,
    "competition": "Championship",
@@ -463,7 +463,7 @@
   },
   {
    "id": 562149,
-   "utc": "2027-02-20T00:00:00Z",
+   "utc": "2027-02-20T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 33,
    "competition": "Championship",
@@ -476,7 +476,7 @@
   },
   {
    "id": 562157,
-   "utc": "2027-02-27T00:00:00Z",
+   "utc": "2027-02-27T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 34,
    "competition": "Championship",
@@ -489,7 +489,7 @@
   },
   {
    "id": 562173,
-   "utc": "2027-03-02T00:00:00Z",
+   "utc": "2027-03-02T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 35,
    "competition": "Championship",
@@ -502,7 +502,7 @@
   },
   {
    "id": 562189,
-   "utc": "2027-03-06T00:00:00Z",
+   "utc": "2027-03-06T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 36,
    "competition": "Championship",
@@ -515,7 +515,7 @@
   },
   {
    "id": 562197,
-   "utc": "2027-03-13T00:00:00Z",
+   "utc": "2027-03-13T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 37,
    "competition": "Championship",
@@ -528,7 +528,7 @@
   },
   {
    "id": 562207,
-   "utc": "2027-03-16T00:00:00Z",
+   "utc": "2027-03-16T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 38,
    "competition": "Championship",
@@ -541,7 +541,7 @@
   },
   {
    "id": 562220,
-   "utc": "2027-03-20T00:00:00Z",
+   "utc": "2027-03-20T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 39,
    "competition": "Championship",
@@ -554,7 +554,7 @@
   },
   {
    "id": 562239,
-   "utc": "2027-04-03T00:00:00Z",
+   "utc": "2027-04-03T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 40,
    "competition": "Championship",
@@ -567,7 +567,7 @@
   },
   {
    "id": 562244,
-   "utc": "2027-04-06T00:00:00Z",
+   "utc": "2027-04-06T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 41,
    "competition": "Championship",
@@ -580,7 +580,7 @@
   },
   {
    "id": 562259,
-   "utc": "2027-04-10T00:00:00Z",
+   "utc": "2027-04-10T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 42,
    "competition": "Championship",
@@ -593,7 +593,7 @@
   },
   {
    "id": 562271,
-   "utc": "2027-04-17T00:00:00Z",
+   "utc": "2027-04-17T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 43,
    "competition": "Championship",
@@ -606,7 +606,7 @@
   },
   {
    "id": 562287,
-   "utc": "2027-04-21T00:00:00Z",
+   "utc": "2027-04-21T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 44,
    "competition": "Championship",
@@ -619,7 +619,7 @@
   },
   {
    "id": 562295,
-   "utc": "2027-04-24T00:00:00Z",
+   "utc": "2027-04-24T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 45,
    "competition": "Championship",
@@ -632,7 +632,7 @@
   },
   {
    "id": 562301,
-   "utc": "2027-05-01T00:00:00Z",
+   "utc": "2027-05-01T12:00:00Z",
    "status": "SCHEDULED",
    "matchday": 46,
    "competition": "Championship",
@@ -1054,5 +1054,5 @@
    "form": "LLDLL"
   }
  ],
- "updated": "2026-11-05T21:29+00:00"
+ "updated": "2026-11-06T13:00+00:00"
 }

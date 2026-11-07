@@ -922,13 +922,13 @@
    "id": 60,
    "name": "Bolton",
    "crest": "https://crests.football-data.org/60.png",
-   "p": 14,
+   "p": 15,
    "w": 5,
    "d": 2,
-   "l": 7,
-   "gf": 19,
-   "ga": 26,
-   "gd": -7,
+   "l": 8,
+   "gf": 20,
+   "ga": 29,
+   "gd": -9,
    "pts": 17,
    "espn": "358",
    "csv": "Bolton",
@@ -1024,14 +1024,14 @@
    "id": 342,
    "name": "Derby County",
    "crest": "https://crests.football-data.org/342.png",
-   "p": 14,
-   "w": 1,
+   "p": 15,
+   "w": 2,
    "d": 4,
    "l": 9,
-   "gf": 11,
-   "ga": 29,
-   "gd": -18,
-   "pts": 7,
+   "gf": 14,
+   "ga": 30,
+   "gd": -16,
+   "pts": 10,
    "espn": "374",
    "csv": "Derby",
    "form": "LLDLL"
@@ -1054,5 +1054,5 @@
    "form": "LLDLL"
   }
  ],
- "updated": "2026-11-06T13:00+00:00"
+ "updated": "2026-11-07T00:58+00:00"
 }

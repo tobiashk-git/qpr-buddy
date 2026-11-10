@@ -81,7 +81,8 @@ td.t, th.t { text-align: left; }
 td.t img { width: 18px; height: 18px; vertical-align: -4px; margin-right: 6px; object-fit: contain; }
 tr.me td { background: #e6eefa; font-weight: 700; }
 tr.zone-top td:first-child { box-shadow: inset 3px 0 var(--win); }
-tr.zone-po td:first-child { box-shadow: inset 3px 0 var(--blue-soft); }
+tr.zone-po td:first-child { box-shadow: inset 3px 0 var(--blue); }
+tr.zone-el td:first-child { box-shadow: inset 3px 0 var(--blue-soft); }
 tr.zone-down td:first-child { box-shadow: inset 3px 0 var(--loss); }
 .lv { display: block; color: var(--red); font-size: 11px; font-weight: 700; margin-left: 24px; }
 .mv { font-size: 10px; font-weight: 700; margin-left: 2px; }
@@ -175,7 +176,7 @@ details summary::-webkit-details-marker { display: none; }
   <button data-tab="news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>News</button>
 </nav>
 <script>
-const APP_VERSION = 9;
+const APP_VERSION = 10;
 const TEAM_ID = 69;
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -274,11 +275,16 @@ function renderHome() {
 function tableToggle() {
   return `<div class="seg tmode" style="margin:12px 0 10px"><button data-t="latest" class="${tableMode === "latest" ? "on" : ""}">Latest</button><button data-t="live" class="${tableMode === "live" ? "on" : ""}">As it stands <span class="dot" style="display:inline-block;vertical-align:1px"></span></button></div>`;
 }
+// 2026/27 rules: top 2 promoted, 3rd–4th straight into the play-off semis, 5th–8th play one-off
+// eliminators (5 v 8, 6 v 7), bottom 3 relegated.
+function zone(pos, n) {
+  return pos <= 2 ? "zone-top" : pos <= 4 ? "zone-po" : pos <= 8 ? "zone-el" : pos > n - 3 ? "zone-down" : "";
+}
 function miniTable(rows, me) {
   const i = rows.indexOf(me), from = Math.max(0, Math.min(i - 2, rows.length - 5));
   const n = rows.length, mv = (r) => !r.moved ? "" : `<span class="mv ${r.moved > 0 ? "up" : "down"}">${r.moved > 0 ? "▲" : "▼"}${Math.abs(r.moved)}</span>`;
   return `<table style="margin-top:10px;text-align:left"><tr><th>#</th><th class="t">Team</th><th>P</th><th>GD</th><th>Pts</th></tr>` +
-    rows.slice(from, from + 5).map((r) => `<tr class="${r === me ? "me" : ""} ${r.pos <= 2 ? "zone-top" : r.pos <= 6 ? "zone-po" : r.pos > n - 3 ? "zone-down" : ""}">
+    rows.slice(from, from + 5).map((r) => `<tr class="${r === me ? "me" : ""} ${zone(r.pos, n)}">
       <td>${r.pos}${mv(r)}</td><td class="t">${r.crest ? `<img src="${esc(r.crest)}" alt="">` : ""}${esc(r.name)}${r.live ? `<span class="lv">${r.live.f}–${r.live.a} v ${esc(r.live.vs)} · ${esc(r.live.clock)}</span>` : ""}</td>
       <td>${r.p}</td><td>${r.gd > 0 ? "+" : ""}${r.gd}</td><td><b>${r.pts}</b></td></tr>`).join("") + `</table>`;
 }
@@ -301,10 +307,10 @@ function renderTable() {
     : tableStamp ? `Updated ${uk(tableStamp.toISOString(), { hour: "2-digit", minute: "2-digit" })}` : "";
   const mv = (r) => !live || !r.moved ? "" : `<span class="mv ${r.moved > 0 ? "up" : "down"}">${r.moved > 0 ? "▲" : "▼"}${Math.abs(r.moved)}</span>`;
   $("#table").innerHTML = `<table><tr><th>#</th><th class="t">Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>GD</th><th>Pts</th></tr>` +
-    rows.map((r) => `<tr class="${r.id === TEAM_ID ? "me" : ""} ${r.pos <= 2 ? "zone-top" : r.pos <= 6 ? "zone-po" : r.pos > n - 3 ? "zone-down" : ""}">
+    rows.map((r) => `<tr class="${r.id === TEAM_ID ? "me" : ""} ${zone(r.pos, n)}">
       <td>${r.pos}${mv(r)}</td><td class="t">${r.crest ? `<img src="${esc(r.crest)}" alt="" loading="lazy">` : ""}${esc(r.name)}${live && r.live ? `<span class="lv">${r.live.f}–${r.live.a} v ${esc(r.live.vs)} · ${esc(r.live.clock)}</span>` : ""}</td>
       <td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td><td>${r.gd > 0 ? "+" : ""}${r.gd}</td><td><b>${r.pts}</b></td></tr>`).join("") +
-    `</table><div class="muted" style="padding:8px 2px 2px">Green: automatic promotion · light blue: play-offs · red: relegation</div>`;
+    `</table><div class="muted" style="padding:8px 2px 2px">Green: automatic promotion · blue: play-off semi-finals (3rd–4th) · light blue: play-off eliminators (5th–8th) · red: relegation</div>`;
 }
 function ago(iso) {
   const h = (Date.now() - new Date(iso)) / 36e5;

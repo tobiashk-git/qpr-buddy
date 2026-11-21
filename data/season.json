@@ -246,7 +246,7 @@
   {
    "id": 561950,
    "utc": "2026-11-21T12:30:00Z",
-   "status": "SCHEDULED",
+   "status": "PAUSED",
    "matchday": 16,
    "competition": "Championship",
    "home": false,
@@ -1057,5 +1057,5 @@
    "form": "LDLLW"
   }
  ],
- "updated": "2026-11-20T14:07+00:00"
+ "updated": "2026-11-21T13:32+00:00"
 }

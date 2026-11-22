@@ -860,14 +860,14 @@
    "id": 59,
    "name": "Blackburn",
    "crest": "https://crests.football-data.org/59.png",
-   "p": 15,
+   "p": 16,
    "w": 6,
-   "d": 3,
+   "d": 4,
    "l": 6,
-   "gf": 22,
-   "ga": 23,
+   "gf": 24,
+   "ga": 25,
    "gd": -1,
-   "pts": 21,
+   "pts": 22,
    "espn": "365",
    "csv": "Blackburn",
    "form": "LWLLW"
@@ -1013,14 +1013,14 @@
    "id": 328,
    "name": "Burnley",
    "crest": "https://crests.football-data.org/328.png",
-   "p": 15,
+   "p": 16,
    "w": 1,
-   "d": 7,
+   "d": 8,
    "l": 7,
-   "gf": 22,
-   "ga": 31,
+   "gf": 24,
+   "ga": 33,
    "gd": -9,
-   "pts": 10,
+   "pts": 11,
    "espn": "379",
    "csv": "Burnley",
    "form": "LLDDL"
@@ -1060,5 +1060,5 @@
    "form": "LDLLW"
   }
  ],
- "updated": "2026-11-21T20:55+00:00"
+ "updated": "2026-11-22T21:05+00:00"
 }

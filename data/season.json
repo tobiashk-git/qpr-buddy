@@ -659,13 +659,13 @@
    "id": 343,
    "name": "Middlesbrough",
    "crest": "https://crests.football-data.org/343.png",
-   "p": 17,
+   "p": 18,
    "w": 10,
    "d": 5,
-   "l": 2,
+   "l": 3,
    "gf": 34,
-   "ga": 20,
-   "gd": 14,
+   "ga": 22,
+   "gd": 12,
    "pts": 35,
    "espn": "369",
    "csv": "Middlesbrough",
@@ -744,14 +744,14 @@
    "id": 340,
    "name": "Southampton",
    "crest": "https://crests.football-data.org/340.png",
-   "p": 17,
-   "w": 9,
+   "p": 18,
+   "w": 10,
    "d": 5,
    "l": 3,
-   "gf": 32,
+   "gf": 34,
    "ga": 16,
-   "gd": 16,
-   "pts": 28,
+   "gd": 18,
+   "pts": 31,
    "espn": "376",
    "csv": "Southampton",
    "form": "WDLWD"
@@ -1063,5 +1063,5 @@
    "form": "LLWLL"
   }
  ],
- "updated": "2026-11-26T15:25+00:00"
+ "updated": "2026-11-27T23:32+00:00"
 }
